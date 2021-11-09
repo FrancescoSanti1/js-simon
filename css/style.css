@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nascondi {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+#contenitore {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenitore-flex {
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    margin: 20px 0;
+}
+
+.numero {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    margin: 0 10px;
+    border-radius: 50%;
+    background-color: rgb(0, 132, 255);
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}

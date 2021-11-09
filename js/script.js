@@ -29,22 +29,24 @@ while (listaNumeri.length < 5) {
     }
 }
 
+document.getElementById("contenuti").innerHTML =
+`<h3>Hai dieci secondi per memorizzare questi cinque numeri:</h3>
+<div id="contenitore-numeri" class="contenitore-flex"></div>`;
+
 console.log("Numeri generati:", listaNumeri);
 
 // stampo in pagina la lista di numeri generata
-listaNumeri.forEach(elemento => {
-    document.getElementById("contenitore-numeri").innerHTML +=
-    `<div class="numero">${elemento}</div>`;
-});
+stampaNumeri(listaNumeri);
 
 // dopo dieci secondi
 setTimeout(() => {
 
     // tolgo i numeri dalla pagina
-    document.getElementById("contenuto-iniziale").classList.add("nascondi");
+    document.getElementById("contenuti").innerHTML = "";
 
     const numeriIndovinati = [];
     let contatoreIndovinati = 0;
+    
     // ripeto quanto segue tante volte, quanto è lunga la lista di numeri da indovinare
     for (let i = 0; i < listaNumeri.length; i++) {
 
@@ -65,18 +67,12 @@ setTimeout(() => {
 
     console.log("numeri indovinati:", numeriIndovinati);
 
-    document.getElementById("contenuto-finale").classList.remove("nascondi");
-
-    document.getElementById("contenuto-finale").innerHTML +=
-    `<h3>Hai indovinato ${contatoreIndovinati} numeri:</h3>`;
+    document.getElementById("contenuti").innerHTML =
+    `<h3>Hai indovinato ${contatoreIndovinati} numeri:</h3>
+    <div id="contenitore-numeri" class="contenitore-flex"></div>`;
 
     // stampo in pagina i numeri indovinati dall'utente
-    numeriIndovinati.forEach(elemento => {
-        document.getElementById("numeri-finale").innerHTML +=
-        `<div class="numero">${elemento}</div>`;
-    });
-
-    
+    stampaNumeri(numeriIndovinati);    
 
 }, 10000);
 
@@ -87,4 +83,11 @@ setTimeout(() => {
 
 function numeroCasuale(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function stampaNumeri(listaDaStampare) {
+    listaDaStampare.forEach(elemento => {
+        document.getElementById("contenitore-numeri").innerHTML +=
+        `<div class="numero">${elemento}</div>`;
+    });
 }
